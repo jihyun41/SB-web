@@ -12,6 +12,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 
      <header id="top_header" class="header">
         <hgroup id="title">
@@ -71,6 +72,11 @@
     </header>
 
    
+=======
+   
+    <div id="include-header"></div>
+
+>>>>>>> 4e01cd166f30818247f5a6fd508340a6f81d6075
     <form id="createaccountForm" method="post">
 
         <h1>회원가입</h1>
@@ -106,6 +112,10 @@
         <button type="submit">회원가입</button>
 
     </form>
+<<<<<<< HEAD
+=======
+    <div id="include-footer"></div>
+>>>>>>> 4e01cd166f30818247f5a6fd508340a6f81d6075
 
     <script>
         document.getElementById('createaccountForm').addEventListener('submit', function(event) {
@@ -137,10 +147,25 @@
         });
     </script>
 
+<<<<<<< HEAD
     <footer>
         <div>문의:@sb_golf_club</div>
         <div><a href="">인스타 바로가기</a></div>
     </footer>
+=======
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            fetch("main HTML/header.html")
+                .then(res => res.text())
+                .then(data => document.getElementById("include-header").innerHTML = data);
+
+            fetch("main HTML/footer.html")
+                .then(res => res.text())
+                .then(data => document.getElementById("include-footer").innerHTML = data);
+        });
+    </script>
+
+>>>>>>> 4e01cd166f30818247f5a6fd508340a6f81d6075
 
 </body>
 </html>
