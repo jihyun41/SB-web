@@ -1,0 +1,96 @@
+body{
+    margin: 0;
+font-family: sans-serif;
+}
+header {
+background-color: rgb(59, 102, 67);
+color: white;
+padding: 10px 20px;
+}
+.header {
+display: flex;
+
+}
+.header #title{
+padding: 10px;
+}
+.header img {
+width: 150px;
+border-radius: 50%;
+}
+
+#top_header{
+display: grid;
+grid-template-columns: 0.5fr 3.5fr;
+grid-template-areas:"title menu";
+background-color:   rgb(59, 102, 67);
+}
+#menu{
+display: grid;
+grid-template-rows: 1fr 2fr;
+}
+#log{
+display: flex;
+justify-content: flex-end;
+}
+#title{
+color: white;
+text-align: center;
+margin: 0;
+padding: 20px;
+}
+nav {
+
+display: flex;
+}
+#menu nav {
+width: 100%;
+}
+main img{
+width: 100%;
+}
+#big{
+align-items: flex-end;
+}
+
+nav .btn_container{
+
+display: flex;
+justify-content: space-around;
+align-items: center;
+width: 100%;         
+flex-wrap: nowrap;  
+
+/*header 띄어서 정렬 */
+}
+.btn{
+color: white;
+
+}
+li{
+list-style: none;
+}
+a{
+text-decoration: none;
+color: inherit;
+
+}
+a:hover {
+    color : rgb(8, 28, 8)
+  }
+
+
+footer {
+background-color: rgb(59, 102, 67);
+color: white;
+text-align: center;
+padding: 20px;
+}
+
+.btn-group:hover .dropdown-menu {
+display: block;
+position: absolute;
+top: 100%;
+z-index: 1000;
+}
+
