@@ -52,16 +52,16 @@
 
             <div class="col-md-6">
                 <div id="profileView">
-                    <p><strong>이름</strong> <span id="viewName">눈송이</span></p>
-                    <p><strong>성별</strong> <span id="viewGender">여성</span></p>
-                    <p><strong>이메일</strong> <span id="viewEmail">snow@gmail.com</span></p>
+                    <p><strong>이름</strong> <span id="viewName"></span></p>
+                    <p><strong>성별</strong> <span id="viewGender"></span></p>
+                    <p><strong>이메일</strong> <span id="viewEmail"></span></p>
                     <button class="btn btn-outline-primary" onclick="switchToEdit()">수정</button>
                 </div>
 
                 <form id="profileEdit" class="d-none">
                     <div class="mb-2">
                         <label for="editName"><strong>이름</strong></label>
-                        <input type="text" id="editName" class="form-control" required>
+                        <input type="text" id="editName" class="form-control" placeholder="눈송이" required>
                     </div>
                     <div class="mb-2">
                         <label for="editGender"><strong>성별</strong></label>
@@ -71,8 +71,25 @@
                         </select>
                     </div>
                     <div class="mb-2">
+                        <label for="editbirthday"><strong>생년월일</strong></label>
+                        <input type="date" id="editbirthday" class="form-control" placeholder="2025.05.27" required>
+                    </div>
+                    <div class="mb-2">
                         <label for="editEmail"><strong>이메일</strong></label>
-                        <input type="email" id="editEmail" class="form-control" required>
+                        <input type="email" id="editEmail" class="form-control" placeholder="snow@gmail.com" required>
+                    </div>
+                    <div class="mb-2">
+                        <label for="password"><strong>비밀번호</strong></label>
+                        <input type="password" id="password" class="form-control" required>
+                    </div>
+                    <div class="mb-2">
+                        <label for="role"><strong>상태</strong></label>
+                        <select id="role" class="form-select">
+                            <option>부원</option>
+                            <option>회장</option>
+                            <option>부회장</option>
+                            <option>운영자</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">저장</button>
                 </form>
@@ -137,6 +154,24 @@
             if (savedImage) {
                 imageBox.style.backgroundImage = `url('${savedImage}')`;
             }
+            const saved = JSON.parse(localStorage.getItem('userProfile')) || {};
+
+            const viewFields = [
+                { id: 'viewName', value: saved.name },
+                { id: 'viewGender', value: saved.gender },
+                { id: 'viewEmail', value: saved.email }
+            ];
+
+            viewFields.forEach(field => {
+                const el = document.getElementById(field.id);
+                if (field.value && field.value.trim() !== '') {
+                    el.textContent = field.value;
+                    el.classList.remove('text-muted');
+                } else {
+                    el.textContent = '입력되지 않음';
+                    el.classList.add('text-muted');
+                }
+            });
         });
     </script>
 
