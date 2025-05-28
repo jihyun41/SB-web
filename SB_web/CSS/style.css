@@ -2,10 +2,36 @@ body{
     margin: 0;
 font-family: sans-serif;
 }
+#include-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* 풋터 고정 */
+#include-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* 본문이 헤더/풋터에 가려지지 않게 여백 주기 */
+main {
+    padding-top: 170px;  /* 헤더 높이에 맞게 조절 */
+    padding-bottom: 80px;  /* 풋터 높이에 맞게 조절 */
+}
 header {
-background-color: rgb(59, 102, 67);
-color: white;
-padding: 10px 20px;
+    background-color: rgb(59, 102, 67);
+    color: white;
+    padding: 10px 20px;
+
+}
+main{
+border-top: grid 200px;
 }
 .header {
 display: flex;
@@ -76,7 +102,7 @@ color: inherit;
 
 }
 a:hover {
-    color : rgb(8, 28, 8)
+    color : rgb(8, 28, 8);
   }
 
 
@@ -84,7 +110,7 @@ footer {
 background-color: rgb(59, 102, 67);
 color: white;
 text-align: center;
-padding: 20px;
+padding: 10px;
 }
 
 .btn-group:hover .dropdown-menu {

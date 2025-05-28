@@ -39,6 +39,7 @@
 
 <body>
     <div id="include-header"></div>
+    <main>
     <div class="container mt-5">
         <div class="row align-items-start">
 
@@ -126,6 +127,8 @@
             </div>
         </div>
     </div>
+    </main>
+    
     <div id="include-footer"></div>
 
     <script>
@@ -175,18 +178,8 @@
         });
     </script>
 
-
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            fetch("main HTML/header.html")
-                .then(res => res.text())
-                .then(data => document.getElementById("include-header").innerHTML = data);
-
-            fetch("main HTML/footer.html")
-                .then(res => res.text())
-                .then(data => document.getElementById("include-footer").innerHTML = data);
-        });
-    </script>
+    <script src="JS/main.js"></script>
+    
 </body>
 
 </html>
