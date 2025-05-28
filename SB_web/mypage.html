@@ -23,6 +23,13 @@
             background-position: center;
         }
 
+        .change-image {
+            background-color: white;
+            color: black;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
         .preview-image {
             width: 80px;
             height: 80px;
@@ -32,7 +39,25 @@
         }
 
         .preview-image:hover {
-            border-color: blue;
+            border-color: rgb(59, 102, 67);
+        }
+
+        .profile-row-wrapper {
+            position: relative;
+        }
+
+        .status-box {
+            position: absolute;
+            right: 0;
+            top: 0;
+            text-align: right;
+        }
+
+        .change-profile {
+            background-color: white;
+            color: black;
+            border: 1px solid #ccc;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -44,58 +69,69 @@
 
             <div class="col-md-3 text-center">
                 <div class="imageBox mb-2" id="imageBox"></div>
-                <button type="button" class="btn btn-outline-secondary mt-2" data-bs-toggle="modal"
-                    data-bs-target="#imageModal">
-                    이미지 수정
+                <button type="button" class="btn btn-outline-secondary change-image mt-2" id="change-image"
+                    data-bs-toggle="modal" data-bs-target="#imageModal">
+                    이미지 편집
                 </button>
             </div>
 
             <div class="col-md-6">
                 <div id="profileView">
-                    <p><strong>이름</strong> <span id="viewName"></span></p>
-                    <p><strong>성별</strong> <span id="viewGender"></span></p>
-                    <p><strong>이메일</strong> <span id="viewEmail"></span></p>
-                    <button class="btn btn-outline-primary" onclick="switchToEdit()">수정</button>
-                </div>
+                    <div class="profile-row-wrapper mb-2">
+                        <p class="mb-2"><strong>이름</strong> <span id="viewName"></span></p>
 
-                <form id="profileEdit" class="d-none">
-                    <div class="mb-2">
-                        <label for="editName"><strong>이름</strong></label>
-                        <input type="text" id="editName" class="form-control" placeholder="눈송이" required>
+                        <div class="status-box">
+                            <p class="mb-1"><strong>상태</strong> <span id="viewRole"></span></p>
+                            <button class="btn btn-outline-primary change-profile btn-sm" id="change-profile"
+                                onclick="switchToEdit()">정보 편집</button>
+                        </div>
                     </div>
-                    <div class="mb-2">
-                        <label for="editGender"><strong>성별</strong></label>
-                        <select id="editGender" class="form-select">
-                            <option>여성</option>
-                            <option>남성</option>
-                        </select>
-                    </div>
-                    <div class="mb-2">
-                        <label for="editbirthday"><strong>생년월일</strong></label>
-                        <input type="date" id="editbirthday" class="form-control" placeholder="2025.05.27" required>
-                    </div>
-                    <div class="mb-2">
-                        <label for="editEmail"><strong>이메일</strong></label>
-                        <input type="email" id="editEmail" class="form-control" placeholder="snow@gmail.com" required>
-                    </div>
-                    <div class="mb-2">
-                        <label for="password"><strong>비밀번호</strong></label>
-                        <input type="password" id="password" class="form-control" required>
-                    </div>
-                    <div class="mb-2">
-                        <label for="role"><strong>상태</strong></label>
-                        <select id="role" class="form-select">
-                            <option>부원</option>
-                            <option>회장</option>
-                            <option>부회장</option>
-                            <option>운영자</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">저장</button>
-                </form>
+
+                    <p class="mb-2"><strong>성별</strong> <span id="viewGender"></span></p>
+                    <p class="mb-2"><strong>생년월일</strong> <span id="viewBirthday"></span></p>
+                    <p class="mb-2"><strong>이메일</strong> <span id="viewEmail"></span></p>
+                    <p class="mb-2"><strong>비밀번호</strong> <span id="viewPassword"></span></p>
+                </div>
             </div>
 
+            <form id="profileEdit" class="d-none">
+                <div class="mb-2">
+                    <label for="editName"><strong>이름</strong></label>
+                    <input type="text" id="editName" class="form-control" placeholder="눈송이" required>
+                </div>
+                <div class="mb-2">
+                    <label for="editGender"><strong>성별</strong></label>
+                    <select id="editGender" class="form-select">
+                        <option>여성</option>
+                        <option>남성</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label for="editbirthday"><strong>생년월일</strong></label>
+                    <input type="date" id="editbirthday" class="form-control" placeholder="2025.05.27" required>
+                </div>
+                <div class="mb-2">
+                    <label for="editEmail"><strong>이메일</strong></label>
+                    <input type="email" id="editEmail" class="form-control" placeholder="snow@gmail.com" required>
+                </div>
+                <div class="mb-2">
+                    <label for="password"><strong>비밀번호</strong></label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <div class="mb-2">
+                    <label for="role"><strong>상태</strong></label>
+                    <select id="role" class="form-select">
+                        <option>부원</option>
+                        <option>회장</option>
+                        <option>부회장</option>
+                        <option>운영자</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">저장</button>
+            </form>
         </div>
+
+    </div>
     </div>
 
     <div class="modal fade" id="imageModal" tabindex="-1">
@@ -139,7 +175,7 @@
             const reader = new FileReader();
             reader.onload = function (e) {
                 imageBox.style.backgroundImage = `url('${e.target.result}')`;
-                localStorage.setItem('userImage', e.target.result); // 저장
+                localStorage.setItem('userImage', e.target.result);
             };
             reader.readAsDataURL(file);
         });
@@ -159,7 +195,10 @@
             const viewFields = [
                 { id: 'viewName', value: saved.name },
                 { id: 'viewGender', value: saved.gender },
-                { id: 'viewEmail', value: saved.email }
+                { id: 'viewBirthday', value: saved.birthday },
+                { id: 'viewEmail', value: saved.email },
+                { id: 'viewPassword', value: saved.password },
+                { id: 'viewRole', value: saved.role }
             ];
 
             viewFields.forEach(field => {
@@ -176,7 +215,7 @@
     </script>
 
     <script src="JS/main.js"></script>
-    
+
 </body>
 
 </html>
