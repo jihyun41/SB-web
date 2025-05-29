@@ -1,6 +1,7 @@
 body{
     margin: 0;
 font-family: sans-serif;
+background-color: rgb(243, 242, 216);
 }
 #include-header {
     position: fixed;
@@ -25,13 +26,14 @@ main {
     padding-bottom: 50px;  /* 풋터 높이에 맞게 조절 */
 }
 header {
-    background-color: rgb(59, 102, 67);
+    background-color: rgb(83, 125, 93);
     color: white;
     padding: 10px 20px;
 
 }
 main{
 border-top: grid 200px;
+
 }
 .header {
 display: flex;
@@ -49,7 +51,7 @@ border-radius: 50%;
 display: grid;
 grid-template-columns: 0.5fr 3.5fr;
 grid-template-areas:"title menu";
-background-color:   rgb(59, 102, 67);
+background-color:   rgb(83, 125, 93);
 }
 #menu{
 display: grid;
@@ -107,7 +109,7 @@ a:hover {
 
 
 footer {
-background-color: rgb(59, 102, 67);
+background-color: rgb(83, 125, 93);
 color: white;
 text-align: center;
 padding: 10px;

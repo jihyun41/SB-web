@@ -11,25 +11,14 @@
         main{
             display: grid;
             grid-template-columns: 0.5fr 3.5fr;
-            background-color: white;
-            
-
+            background-color: rgb(243, 242, 216);
         }
         aside{
             border-right: 2px solid black; 
-           
-
-         
         }
-        aside h3{
-            text-align: center;
-            padding: 30px;
+        aside ul{
+            padding: 0%;
         }
-        aside li{
-            padding: 30px;
-            font-size: large;
-        }
-
 
 aside h3 {
     text-align: center;
@@ -47,10 +36,31 @@ aside li {
     height: 300px;
 }
 
-    #history-title{
-        padding: 20px;
+#history-title{
+    padding: 20px;
         
-    }
+}
+    aside ul li a {
+    display: block;
+    padding: 20px;
+    font-size: large;
+    color: black;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+aside ul li a:hover {
+    color: rgb(83, 125, 93); 
+    font-size: 1.5em;
+}
+aside ul li a.active {
+    font-weight: bold;
+    color: rgb(115, 148, 107);        
+    background-color:rgb(223, 222, 188);
+    border-left: 4px solid rgb(83, 125, 93);
+}
+
+
     </style>
 </head>
 <body>
@@ -59,44 +69,36 @@ aside li {
     <aside>
         <h3>소개</h3>
         <ul>
-            <li><a>SB역사</a></li>
-            <li><a>활동</a></li>
-            <li><a>오시는 길</a></li>
-            <li><a>구성원</a></li>
+            <li><a href="history.html" class="active">SB역사</a></li>
+            <li><a href="#">활동</a></li>
+            <li><a href="#">오시는 길</a></li>
+            <li><a href="#">구성원</a></li>
         </ul>
     </aside>
     <div>
         <h1 id="history-title">SB history</h1>
         <div class="card mb-4">
-            <img src="이미지경로.jpg" class="card-img-top" alt="SB 골프 클럽 이미지">
+            <img src="IMG/mainimg1.jpg" class="card-img-top" alt="SB 골프 클럽 이미지">
             <div class="card-body">
                 <h5 class="card-title">SB 골프 클럽의 역사</h5>
                 <p class="card-text">
                     SB 골프 클럽은
                 </p>
             </div>
+        </div>    
             <div class="card mb-4">
-            <img src="이미지경로.jpg" class="card-img-top" alt="SB 골프 클럽 이미지">
+            <img src="IMG/mainimg2.jpg" class="card-img-top" alt="SB 골프 클럽 이미지">
             <div class="card-body">
                 <h5 class="card-title">SB 골프 클럽의 역사</h5>
                 <p class="card-text">
                     SB 골프 클럽은.
                 </p>
             </div>
+            </div>
     </div>
 </main>
     <div id="include-footer"></div>
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            fetch("main HTML/header.html")
-                .then(res => res.text())
-                .then(data => document.getElementById("include-header").innerHTML = data);
-
-            fetch("main HTML/footer.html")
-                .then(res => res.text())
-                .then(data => document.getElementById("include-footer").innerHTML = data);
-        });
-    </script>
+    <script src="JS/main.js"></script>
 
 </body>
 </html>
