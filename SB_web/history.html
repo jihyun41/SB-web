@@ -12,16 +12,52 @@
             display: grid;
             grid-template-columns: 0.5fr 3.5fr;
             background-color: white;
+            
 
         }
-    
+        aside{
+            border-right: 2px solid black; 
+           
+
+         
+        }
+        aside h3{
+            text-align: center;
+            padding: 30px;
+        }
+        aside li{
+            padding: 30px;
+            font-size: large;
+        }
+
+
+aside h3 {
+    text-align: center;
+    padding: 30px;
+}
+
+aside li {
+    padding: 30px;
+    font-size: large;
+    list-style: none;
+}
+
+.card img {
+    object-fit: cover;
+    height: 300px;
+}
+
+    #history-title{
+        padding: 20px;
+        
+    }
     </style>
 </head>
 <body>
     <div id="include-header"></div>
 <main>
     <aside>
-        <h1>소개</h1>
+        <h3>소개</h3>
         <ul>
             <li><a>SB역사</a></li>
             <li><a>활동</a></li>
@@ -30,7 +66,23 @@
         </ul>
     </aside>
     <div>
-        
+        <h1 id="history-title">SB history</h1>
+        <div class="card mb-4">
+            <img src="이미지경로.jpg" class="card-img-top" alt="SB 골프 클럽 이미지">
+            <div class="card-body">
+                <h5 class="card-title">SB 골프 클럽의 역사</h5>
+                <p class="card-text">
+                    SB 골프 클럽은
+                </p>
+            </div>
+            <div class="card mb-4">
+            <img src="이미지경로.jpg" class="card-img-top" alt="SB 골프 클럽 이미지">
+            <div class="card-body">
+                <h5 class="card-title">SB 골프 클럽의 역사</h5>
+                <p class="card-text">
+                    SB 골프 클럽은.
+                </p>
+            </div>
     </div>
 </main>
     <div id="include-footer"></div>

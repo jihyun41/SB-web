@@ -21,8 +21,8 @@ font-family: sans-serif;
 
 /* 본문이 헤더/풋터에 가려지지 않게 여백 주기 */
 main {
-    padding-top: 170px;  /* 헤더 높이에 맞게 조절 */
-    padding-bottom: 80px;  /* 풋터 높이에 맞게 조절 */
+    padding-top: 190px;  /* 헤더 높이에 맞게 조절 */
+    padding-bottom: 50px;  /* 풋터 높이에 맞게 조절 */
 }
 header {
     background-color: rgb(59, 102, 67);
