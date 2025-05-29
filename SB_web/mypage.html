@@ -13,6 +13,9 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
     <style>
         .imageBox {
             width: 200px;
@@ -21,6 +24,15 @@
             border: 1px solid #ccc;
             background-size: cover;
             background-position: center;
+            border-radius: 1rem;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-image-section {
+            width: 200px;
+            flex-shrink: 0;
+            text-align: left;
+            position: relative;
         }
 
         .change-image {
@@ -28,6 +40,15 @@
             color: black;
             border: 1px solid #ccc;
             cursor: pointer;
+            float: right;
+            font-size: 0.9rem;
+            padding: 4px 10px;
+            margin-top: 4px;
+        }
+
+        .change-image:hover {
+            background-color: rgb(59, 102, 67);
+            color: white;
         }
 
         .preview-image {
@@ -42,96 +63,114 @@
             border-color: rgb(59, 102, 67);
         }
 
-        .profile-row-wrapper {
-            position: relative;
-        }
-
-        .status-box {
-            position: absolute;
-            right: 0;
-            top: 0;
-            text-align: right;
-        }
-
         .change-profile {
-            background-color: white;
-            color: black;
-            border: 1px solid #ccc;
+            background-color: rgb(59, 102, 67);
+            color: white;
+            border: none;
             cursor: pointer;
+        }
+
+        .change-profile:hover {
+            background-color: rgb(45, 80, 54);
+        }
+
+        .profile-wrapper {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .profile-status-section {
+            flex-shrink: 0;
+        }
+
+        .card-box {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 
-<body>
+<body style="background-color: #f8f9fa;">
     <div id="include-header"></div>
     <div class="container mt-5">
-        <div class="row align-items-start">
+        <div class="profile-wrapper d-flex flex-wrap justify-content-center align-items-start">
 
-            <div class="col-md-3 text-center">
+            <div class="profile-image-section text-center me-md-4 mb-4">
                 <div class="imageBox mb-2" id="imageBox"></div>
-                <button type="button" class="btn btn-outline-secondary change-image mt-2" id="change-image"
+                <button type="button" class="btn btn-outline-secondary change-image" id="change-image"
                     data-bs-toggle="modal" data-bs-target="#imageModal">
                     이미지 편집
                 </button>
             </div>
 
-            <div class="col-md-6">
+            <div class="profile-info-section mb-4" style="min-width: 300px; max-width: 500px;">
                 <div id="profileView">
-                    <div class="profile-row-wrapper mb-2">
-                        <p class="mb-2"><strong>이름</strong> <span id="viewName"></span></p>
+                    <p class="mb-2"><strong><i class="fa-solid fa-user me-1"></i>이름</strong> <span id="viewName"></span>
+                    </p>
+                    <p class="mb-2"><strong><i class="fa-solid fa-venus-mars me-1"></i>성별</strong> <span
+                            id="viewGender"></span></p>
+                    <p class="mb-2"><strong><i class="fa-solid fa-cake-candles me-1"></i>생년월일</strong> <span
+                            id="viewBirthday"></span></p>
+                    <p class="mb-2"><strong><i class="fa-solid fa-envelope me-1"></i>이메일</strong> <span
+                            id="viewEmail"></span></p>
+                    <p class="mb-2"><strong><i class="fa-solid fa-key me-1"></i>비밀번호</strong> <span
+                            id="viewPassword"></span></p>
+                </div>
 
-                        <div class="status-box">
-                            <p class="mb-1"><strong>상태</strong> <span id="viewRole"></span></p>
-                            <button class="btn btn-outline-primary change-profile btn-sm" id="change-profile"
-                                onclick="switchToEdit()">정보 편집</button>
+                <form id="profileEdit" class="d-none">
+                    <div class="mb-2">
+                        <label for="editName"><strong>이름</strong></label>
+                        <input type="text" id="editName" class="form-control" placeholder="눈송이" required>
+                    </div>
+                    <div class="mb-2">
+                        <label for="editGender"><strong>성별</strong></label>
+                        <select id="editGender" class="form-select">
+                            <option>여성</option>
+                            <option>남성</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label for="editbirthday"><strong>생년월일</strong></label>
+                        <input type="date" id="editbirthday" class="form-control" required>
+                    </div>
+                    <div class="mb-2">
+                        <label for="editEmail"><strong>이메일</strong></label>
+                        <input type="email" id="editEmail" class="form-control" required>
+                    </div>
+                    <div class="mb-2">
+                        <label for="password"><strong>비밀번호</strong></label>
+                        <input type="password" id="password" class="form-control" required>
+
+                        <div class="form-check mt-1">
+                            <input type="checkbox" class="form-check-input" id="togglePassword">
+                            <label class="form-check-label" for="togglePassword">비밀번호 보기</label>
                         </div>
                     </div>
-
-                    <p class="mb-2"><strong>성별</strong> <span id="viewGender"></span></p>
-                    <p class="mb-2"><strong>생년월일</strong> <span id="viewBirthday"></span></p>
-                    <p class="mb-2"><strong>이메일</strong> <span id="viewEmail"></span></p>
-                    <p class="mb-2"><strong>비밀번호</strong> <span id="viewPassword"></span></p>
-                </div>
+                    <div class="mb-2">
+                        <label for="role"><strong>상태</strong></label>
+                        <select id="role" class="form-select">
+                            <option>부원</option>
+                            <option>회장</option>
+                            <option>부회장</option>
+                            <option>운영자</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">저장</button>
+                </form>
             </div>
 
-            <form id="profileEdit" class="d-none">
-                <div class="mb-2">
-                    <label for="editName"><strong>이름</strong></label>
-                    <input type="text" id="editName" class="form-control" placeholder="눈송이" required>
-                </div>
-                <div class="mb-2">
-                    <label for="editGender"><strong>성별</strong></label>
-                    <select id="editGender" class="form-select">
-                        <option>여성</option>
-                        <option>남성</option>
-                    </select>
-                </div>
-                <div class="mb-2">
-                    <label for="editbirthday"><strong>생년월일</strong></label>
-                    <input type="date" id="editbirthday" class="form-control" placeholder="2025.05.27" required>
-                </div>
-                <div class="mb-2">
-                    <label for="editEmail"><strong>이메일</strong></label>
-                    <input type="email" id="editEmail" class="form-control" placeholder="snow@gmail.com" required>
-                </div>
-                <div class="mb-2">
-                    <label for="password"><strong>비밀번호</strong></label>
-                    <input type="password" id="password" class="form-control" required>
-                </div>
-                <div class="mb-2">
-                    <label for="role"><strong>상태</strong></label>
-                    <select id="role" class="form-select">
-                        <option>부원</option>
-                        <option>회장</option>
-                        <option>부회장</option>
-                        <option>운영자</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">저장</button>
-            </form>
-        </div>
+            <div class="profile-status-section text-md-end ms-md-4 mb-4" style="min-width: 120px;">
+                <p class="mb-1"><strong><i class="fa-solid fa-user-tag me-1"></i>상태</strong> <span id="viewRole"></span>
+                </p>
+                <button class="btn btn-outline-primary change-profile btn-sm" id="change-profile"
+                    onclick="switchToEdit()">정보 편집</button>
+            </div>
 
-    </div>
+        </div>
     </div>
 
     <div class="modal fade" id="imageModal" tabindex="-1">
@@ -147,7 +186,7 @@
                         <input type="file" class="form-control" id="uploadInput" accept="image/*">
                     </div>
                     <hr>
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between flex-wrap gap-2">
                         <img src="IMG/tomato.png" class="preview-image" onclick="selectImage(this.src)">
                         <img src="IMG/cherry.png" class="preview-image" onclick="selectImage(this.src)">
                         <img src="IMG/grape.png" class="preview-image" onclick="selectImage(this.src)">
@@ -156,12 +195,14 @@
                         <img src="IMG/carrot.png" class="preview-image" onclick="selectImage(this.src)">
                         <img src="IMG/mushroom.png" class="preview-image" onclick="selectImage(this.src)">
                         <img src="IMG/blueberry.png" class="preview-image" onclick="selectImage(this.src)">
-
+                        <img src="IMG/koreanmelon.png" class="preview-image" onclick="selectImage(this.src)">
+                        <img src="IMG/avocado.png" class="preview-image" onclick="selectImage(this.src)">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div id="include-footer"></div>
 
     <script>
@@ -171,7 +212,6 @@
         uploadInput.addEventListener('change', function () {
             const file = uploadInput.files[0];
             if (!file) return;
-
             const reader = new FileReader();
             reader.onload = function (e) {
                 imageBox.style.backgroundImage = `url('${e.target.result}')`;
@@ -185,26 +225,74 @@
             localStorage.setItem('userImage', src);
         }
 
+        function switchToEdit() {
+            document.getElementById('profileView').classList.add('d-none');
+            document.getElementById('profileEdit').classList.remove('d-none');
+
+            const saved = JSON.parse(localStorage.getItem('userProfile')) || {};
+
+            document.getElementById('editName').value = saved.name || '';
+            document.getElementById('editGender').value = saved.gender || '여성';
+            document.getElementById('editbirthday').value = saved.birthday || '';
+            document.getElementById('editEmail').value = saved.email || '';
+
+            document.getElementById('password').value = saved.password || '';
+
+            document.getElementById('role').value = saved.role || '부원';
+        }
+
+        document.getElementById('profileEdit').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const inputPassword = document.getElementById('password').value;
+
+            const updatedProfile = {
+                name: document.getElementById('editName').value,
+                gender: document.getElementById('editGender').value,
+                birthday: document.getElementById('editbirthday').value,
+                email: document.getElementById('editEmail').value,
+                password: inputPassword,
+                role: document.getElementById('role').value
+            };
+
+            localStorage.setItem('userProfile', JSON.stringify(updatedProfile));
+
+            document.getElementById('viewName').textContent = updatedProfile.name;
+            document.getElementById('viewGender').textContent = updatedProfile.gender;
+            document.getElementById('viewBirthday').textContent = updatedProfile.birthday;
+            document.getElementById('viewEmail').textContent = updatedProfile.email;
+            document.getElementById('viewPassword').textContent = '*'.repeat(updatedProfile.password.length);
+            document.getElementById('viewRole').textContent = updatedProfile.role;
+
+            document.getElementById('profileEdit').classList.add('d-none');
+            document.getElementById('profileView').classList.remove('d-none');
+        });
+
         window.addEventListener('DOMContentLoaded', () => {
             const savedImage = localStorage.getItem('userImage');
             if (savedImage) {
                 imageBox.style.backgroundImage = `url('${savedImage}')`;
             }
-            const saved = JSON.parse(localStorage.getItem('userProfile')) || {};
 
+            const saved = JSON.parse(localStorage.getItem('userProfile')) || {};
             const viewFields = [
-                { id: 'viewName', value: saved.name },
-                { id: 'viewGender', value: saved.gender },
-                { id: 'viewBirthday', value: saved.birthday },
-                { id: 'viewEmail', value: saved.email },
-                { id: 'viewPassword', value: saved.password },
-                { id: 'viewRole', value: saved.role }
+                { id: 'viewName', key: 'name' },
+                { id: 'viewGender', key: 'gender' },
+                { id: 'viewBirthday', key: 'birthday' },
+                { id: 'viewEmail', key: 'email' },
+                { id: 'viewPassword', key: 'password' },
+                { id: 'viewRole', key: 'role' }
             ];
 
             viewFields.forEach(field => {
                 const el = document.getElementById(field.id);
-                if (field.value && field.value.trim() !== '') {
-                    el.textContent = field.value;
+                const value = saved[field.key];
+                if (value && value.trim() !== '') {
+                    if (field.id === 'viewPassword') {
+                        el.textContent = '*'.repeat(value.length);
+                    } else {
+                        el.textContent = value;
+                    }
                     el.classList.remove('text-muted');
                 } else {
                     el.textContent = '입력되지 않음';
@@ -212,10 +300,14 @@
                 }
             });
         });
+
+        document.getElementById('togglePassword').addEventListener('change', function () {
+            const passwordInput = document.getElementById('password');
+            passwordInput.type = this.checked ? 'text' : 'password';
+        });
     </script>
 
     <script src="JS/main.js"></script>
-
 </body>
 
 </html>
