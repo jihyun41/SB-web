@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,7 +44,7 @@
     <div id="include-footer"></div>
 
     <script>
-        document.getElementById('login Form').addEventListener('submit', function(event) {
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
                 event.preventDefault();
 
                 const inputEmail = document.getElementById('email').value;
@@ -65,16 +65,6 @@
         });
     </script>
 
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            fetch("main HTML/header.html")
-                .then(res => res.text())
-                .then(data => document.getElementById("include-header").innerHTML = data);
-
-            fetch("main HTML/footer.html")
-                .then(res => res.text())
-                .then(data => document.getElementById("include-footer").innerHTML = data);
-        });
-    </script>
+    <script src="JS/main.js"></script>
 </body>
 </html>

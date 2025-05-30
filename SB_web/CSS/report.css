@@ -1,0 +1,43 @@
+        main{
+            display: grid;
+            grid-template-columns: 0.5fr 3.5fr;
+            background-color: rgb(243, 242, 216);
+        }
+        aside{
+            border-right: 2px solid black; 
+        }
+        aside ul{
+            padding: 0%;
+        }
+
+aside h3 {
+    text-align: center;
+    padding: 30px;
+}
+
+aside li {
+    padding: 30px;
+    font-size: large;
+    list-style: none;
+}
+
+    aside ul li a {
+    display: block;
+    padding: 20px;
+    font-size: large;
+    color: black;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+aside ul li a:hover {
+    color: rgb(83, 125, 93); 
+    font-size: 1.5em;
+}
+aside ul li a.active {
+    font-weight: bold;
+    color: rgb(115, 148, 107);        
+    background-color:rgb(223, 222, 188);
+    border-left: 4px solid rgb(83, 125, 93);
+}
+
