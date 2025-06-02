@@ -22,13 +22,13 @@ background-color: rgb(243, 242, 216);
 
 /* 본문이 헤더/풋터에 가려지지 않게 여백 주기 */
 main {
-    padding-top: 190px;  /* 헤더 높이에 맞게 조절 */
+    padding-top: 130px;  /* 헤더 높이에 맞게 조절 */
     padding-bottom: 50px;  /* 풋터 높이에 맞게 조절 */
 }
 header {
     background-color: rgb(83, 125, 93);
     color: white;
-    padding: 10px 20px;
+    padding: 5px 15px;
 
 }
 main{
@@ -39,12 +39,47 @@ border-top: grid 200px;
 display: flex;
 
 }
-.header #title{
-padding: 10px;
+.hover-container {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: 100%;
 }
-.header img {
-width: 160px;
-border-radius: 50%;
+
+.hover-container img {
+  width: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.hover-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(83, 125, 93);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 10px;
+ 
+}
+
+.hover-container:hover img {
+  opacity: 0;
+}
+
+.hover-container:hover .hover-text {
+  opacity: 1;
 }
 
 #top_header{
@@ -55,17 +90,18 @@ background-color:   rgb(83, 125, 93);
 }
 #menu{
 display: grid;
-grid-template-rows: 1fr 2fr;
+grid-template-rows: 0.5fr 0.5fr;
 }
 #log{
 display: flex;
 justify-content: flex-end;
+font-size: small;
 }
 #title{
 color: white;
 text-align: center;
 margin: 0;
-padding: 20px;
+padding: 10px;
 }
 nav {
 
@@ -113,6 +149,7 @@ background-color: rgb(83, 125, 93);
 color: white;
 text-align: center;
 padding: 10px;
+font-size: small;
 }
 
 .btn-group:hover .dropdown-menu {

@@ -32,7 +32,7 @@ aside li {
 
 aside ul li a:hover {
     color: rgb(83, 125, 93); 
-    font-size: 1.5em;
+    font-size: 1.4em;
 }
 aside ul li a.active {
     font-weight: bold;
