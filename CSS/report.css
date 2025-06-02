@@ -1,14 +1,14 @@
-        main{
-            display: grid;
-            grid-template-columns: 0.5fr 3.5fr;
-            background-color: rgb(243, 242, 216);
-        }
-        aside{
-            border-right: 2px solid black; 
-        }
-        aside ul{
-            padding: 0%;
-        }
+main{
+    display: grid;
+    grid-template-columns: 1fr 5.5fr;
+    background-color: rgb(243, 242, 216);
+}
+aside{
+    border-right: 2px solid black; 
+}
+aside ul{
+    padding: 0%;
+}
 
 aside h3 {
     text-align: center;
