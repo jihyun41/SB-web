@@ -40,7 +40,7 @@ border-top: grid 200px;
   align-items: center;
   gap: 15px;
   text-decoration: none;
-  color:rgb(146, 186, 151);;
+  color:white;
   white-space: nowrap; 
 }
 .logo-title:hover {
