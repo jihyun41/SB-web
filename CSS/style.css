@@ -1,7 +1,5 @@
 body{
-    
   margin: 0;
-  
 font-family: sans-serif;
 background-color: rgb(243, 242, 216);
 }
@@ -42,11 +40,11 @@ border-top: grid 200px;
   align-items: center;
   gap: 15px;
   text-decoration: none;
-  color: white;
+  color:rgb(146, 186, 151);;
   white-space: nowrap; 
 }
 .logo-title:hover {
-  color: rgb(255, 255, 255);  /* 마우스 오버 시 파란색으로 */
+  color: rgb(47, 97, 54);  /* 마우스 오버 시 파란색으로 */
 }
 
 .site-name {
