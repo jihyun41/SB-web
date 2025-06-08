@@ -24,42 +24,14 @@
         border-bottom: 3px solid #000;  
         font-weight: bold;              
       }
-      .num{
-        display: flex;
-        align-items: center;
+ 
+      .schedule_img{
+        width: 500px;
+        border:  10px solid gray;        
+        display: block;
+        margin: 20px auto;
       }
-      table tbody tr:hover {
-        background-color: rgb(160, 158, 130); 
-        color: white;
-        cursor: pointer;
-      }
-      table {
-        border-collapse: separate;
-        border-spacing: 0 10px;  /* 공지글 세로 간격 */
-      }
-      .pagination .page-link {
-        background-color: rgb(187, 185, 150); 
-        color: #333;                          
-        border: none;
-        margin: 0 4px;
-      }
-
-      .pagination .page-link:hover {
-        background-color: rgb(160, 158, 130);
-        color: white;
-      }
-
-      .pagination .active .page-link {
-        background-color: rgb(105, 102, 74);
-        color: white;
-        font-weight: bold;
-      }
-      .pagination .disabled .page-link {
-        background-color: rgb(215, 214, 180); 
-        color: #888;
-        opacity: 1; 
-        pointer-events: none; 
-      }
+      
 
     </style>
 </head>
@@ -76,7 +48,13 @@
         <button type="button" class="btn text-dark" onclick="location.href='notice_event.html'">이벤트</button>
       </div>
   </div><br>
-
+  <div>
+    <img class="schedule_img" src="IMG/25_03.jpg">
+    <img class="schedule_img" src="IMG/25_04.jpg">
+    <img class="schedule_img" src="IMG/25_05.jpg">
+    <img class="schedule_img" src="IMG/25_06.jpg">
+    
+  </div>
 </main>
 
 </main>
