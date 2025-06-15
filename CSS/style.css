@@ -1,41 +1,40 @@
-body{
+body {
   margin: 0;
-font-family: sans-serif;
-background-color: rgb(243, 242, 216);
+  font-family: sans-serif;
+  background-color: rgb(243, 242, 216);
 }
+
 #include-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 /* 본문이 헤더/풋터에 가려지지 않게 여백 주기 */
 main {
-    padding-top: 130px;  /* 헤더 높이에 맞게 조절 */
-   
+  padding-top: 130px; /* 헤더 높이에 맞게 조절 */
+  border-top: grid 200px;
 }
+
 header {
-    background-color: rgb(83, 125, 93);
-    color: white;
-    padding: 5px 15px;
-
+  background-color: rgb(83, 125, 93);
+  color: white;
+  padding: 5px 15px;
 }
-main{
-border-top: grid 200px;
 
-}
 .logo-title {
   display: flex;
   align-items: center;
   gap: 15px;
   text-decoration: none;
-  color:white;
-  white-space: nowrap; 
+  color: white;
+  white-space: nowrap;
 }
+
 .logo-title:hover {
-  color: rgb(47, 97, 54);  /* 마우스 오버 시 파란색으로 */
+  color: rgb(47, 97, 54);
 }
 
 .site-name {
@@ -43,16 +42,17 @@ border-top: grid 200px;
   font-size: 13px;
   text-align: left;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .site-name strong {
   font-size: 30px;
 }
-.header {
-display: flex;
 
+.header {
+  display: flex;
 }
+
 .hover-container {
   position: relative;
   display: inline-block;
@@ -67,80 +67,83 @@ display: flex;
   object-fit: cover;
 }
 
-#top_header{
-display: grid;
-grid-template-columns: 0.5fr 3.5fr;
-grid-template-areas:"title menu";
-background-color:   rgb(83, 125, 93);
+#top_header {
+  display: grid;
+  grid-template-columns: 0.5fr 3.5fr;
+  grid-template-areas: "title menu";
+  background-color: rgb(83, 125, 93);
 }
-#menu{
-display: grid;
-grid-template-rows: 0.5fr 0.5fr;
+
+#menu {
+  display: grid;
+  grid-template-rows: 0.5fr 0.5fr;
 }
-#log{
-display: flex;
-justify-content: flex-end;
-font-size: small;
+
+#log {
+  display: flex;
+  justify-content: flex-end;
+  font-size: small;
 }
-#title{
-color: white;
-text-align: center;
-margin: 0;
-padding: 10px;
+
+#title {
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
 }
+
 nav {
-
-display: flex;
+  display: flex;
 }
+
 #menu nav {
-width: 100%;
-}
-main img{
-width: 100%;
-}
-#big{
-align-items: flex-end;
+  width: 100%;
 }
 
-nav .btn_container{
-
-display: flex;
-justify-content: space-around;
-align-items: center;
-width: 100%;         
-flex-wrap: nowrap;  
-
-/*header 띄어서 정렬 */
+main img {
+  width: 100%;
 }
-.btn{
-color: white;
 
+#big {
+  align-items: flex-end;
 }
-li{
-list-style: none;
-}
-a{
-text-decoration: none;
-color: inherit;
 
+nav .btn_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  flex-wrap: nowrap;
 }
+
+.btn {
+  color: white;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 a:hover {
-    color : rgb(8, 28, 8);
-  }
-
+  color: rgb(8, 28, 8);
+}
 
 footer {
-background-color: rgb(83, 125, 93);
-color: white;
-text-align: center;
-padding: 10px;
-font-size: small;
+  background-color: rgb(83, 125, 93);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: small;
 }
 
 .btn-group:hover .dropdown-menu {
-display: block;
-position: absolute;
-top: 100%;
-z-index: 1000;
+  display: block;
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
 }
-
