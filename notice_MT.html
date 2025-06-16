@@ -60,9 +60,49 @@
         opacity: 1; 
         pointer-events: none; 
       }
-      main{
-        padding-bottom: 486px;
+
+       .card-columns {
+      column-count: 2;
+      gap: 20px;
+      padding: 0 250px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .card-body {
+      padding: 15px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 768px) {
+      .card-columns {
+        column-count: 1;
+        padding: 0 20px;
       }
+    }
+      
 
     </style>
 </head>
@@ -70,7 +110,7 @@
     <div id="include-header"></div>
 
 <main class="container mt-5">
-  <h2 id="notice-title" class="mb-4">MT</h2>
+  <h2 id="notice-title" class="mb-4">MT 안내</h2>
 <div id="notice-menu">
       <div class="btn_container">
         <button type="button" class="btn text-dark " onclick="location.href='notice_main.html'">공지</button>
@@ -81,6 +121,72 @@
   </div><br>
 
 </main>
+
+
+<div class="card-columns">
+  <div class="card">
+      <img src="IMG/25-1_p_6.jpg" alt="MT1">
+      <div class="card-body">
+        <h5 class="card-title">MT 안내</h5>
+        <p class="card-text">사전에 안내한 내용</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="IMG/mt_2.jpg" alt="MT1">
+      <div class="card-body">
+        <h5 class="card-title">라운딩 에티켓</h5>
+        <p class="card-text">가기 전 숙지하면 좋은 에티켓!</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="IMG/mt_4.jpg" alt="MT2">
+      <div class="card-body">
+        <h5 class="card-title">차량 이동 조</h5>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="IMG/mt_6.jpg" alt="MT3">
+      <div class="card-body">
+        <h5 class="card-title">Time Table</h5>
+        <p class="card-text">신나는 MT~!</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="IMG/mt_1.jpg" alt="MT4">
+      <div class="card-body">
+        <h5 class="card-title">MT 공지</h5>
+        <p class="card-text">도착권장 시간과 준비물을 잘 확인해주세요~</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="IMG/mt_3.jpg" alt="MT5">
+      <div class="card-body">
+        <h5 class="card-title">골프장 이용수칙</h5>
+        <p class="card-text">라운딩 전 <서평택 골프플럽> 이용규칙을 확인해주세요!</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="IMG/mt_5.jpg" alt="MT6">
+      <div class="card-body">
+        <h5 class="card-title">라운딩 조</h5>
+      </div>
+    </div>
+ 
+
+  <div class="card">
+      <img src="IMG/mt_7.jpg" alt="MT7">
+      <div class="card-body">
+        <h5 class="card-title">추가 안내사항</h5>
+        <p class="card-text">안전이 최우선</p>
+      </div>
+    </div>
+  </div>
+
 
 </main>
     <div id="include-footer"></div>
