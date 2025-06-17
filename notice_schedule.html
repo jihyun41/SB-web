@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -85,3 +86,121 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SB Golf Club_Schedule</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="CSS/style.css">
+
+  <style>
+    #notice-title {
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    #notice-menu {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .btn.active {
+      border-bottom: 3px solid #000;
+      font-weight: bold;
+    }
+
+    .calendar-section {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .calendar-section img {
+      width: 100%;
+      border-radius: 8px;
+      border: 5px solid rgb(119, 157, 119);
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .calendar-section h4 {
+      color: rgb(83, 125, 93);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .calendar-section p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 0;
+    }
+
+    main {
+      padding-bottom: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="include-header"></div>
+
+  <main class="container mt-5">
+    <h2 id="notice-title" class="mb-4">📅 2025년 상반기 일정</h2>
+
+    <div id="notice-menu">
+      <div class="btn_container">
+        <button type="button" class="btn text-dark" onclick="location.href='notice_main.html'">공지</button>
+        <button type="button" class="btn text-dark active" onclick="location.href='notice_schedule.html'">일정</button>
+        <button type="button" class="btn text-dark" onclick="location.href='notice_MT.html'">MT</button>
+        <button type="button" class="btn text-dark" onclick="location.href='notice_event.html'">이벤트</button>
+      </div>
+    </div>
+
+    <!-- 3월 일정 -->
+    <section class="calendar-section">
+      <img src="IMG/25_03.jpg" alt="3월 일정">
+      <h4>3월 | 첫 만남 및 개강총회</h4>
+    </section>
+
+    <!-- 4월 일정 -->
+    <section class="calendar-section">
+      <img src="IMG/25_04.jpg" alt="4월 일정">
+      <h4>4월 | 중간고사 기간</h4>
+    </section>
+
+    <!-- 5월 일정 -->
+    <section class="calendar-section">
+      <img src="IMG/25_05.jpg" alt="5월 일정">
+      <h4>5월 | MT 및 스크린&레슨 병행</h4>
+    </section>
+
+    <!-- 6월 일정 -->
+    <section class="calendar-section">
+      <img src="IMG/25_06.jpg" alt="6월 일정">
+      <h4>6월 | 기말고사 기간 및 종강총회</h4>
+    </section>
+
+  </main>
+
+  <div id="include-footer"></div>
+
+  <script src="JS/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+          crossorigin="anonymous"></script>
+
+</body>
+</html>
+>>>>>>> 3e1d508e840298c20e20cc259e9517fdcf1df248

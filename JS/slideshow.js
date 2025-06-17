@@ -4,6 +4,7 @@ const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 
 const totalSlides = slideItems.length;
+<<<<<<< HEAD
 let currentIdx = 1;
 let isAnimating = false;
 
@@ -47,4 +48,24 @@ next.addEventListener('click', () => {
 
 setInterval(() => {
   goToSlide(currentIdx + 1);
+=======
+let currentIdx = 0;
+
+function goToSlide(index) {
+  slides.style.transform = `translateX(-${index * 100}%)`;
+  currentIdx = index;
+}
+
+prev.addEventListener('click', () => {
+  if (currentIdx > 0) goToSlide(currentIdx - 1);
+});
+
+next.addEventListener('click', () => {
+  if (currentIdx < totalSlides - 1) goToSlide(currentIdx + 1);
+});
+
+setInterval(() => {
+  currentIdx = (currentIdx + 1) % totalSlides;
+  goToSlide(currentIdx);
+>>>>>>> 3e1d508e840298c20e20cc259e9517fdcf1df248
 }, 5000);
