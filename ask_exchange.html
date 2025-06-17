@@ -53,5 +53,32 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script src="JS/main.js"></script>
+  <script>
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const school = document.getElementById("school").value.trim();
+    const contact = document.getElementById("contact").value.trim();
+    const proposal = document.getElementById("proposal").value.trim();
+    const date = new Date().toISOString().split("T")[0];
+
+    if (!school || !contact || !proposal) {
+      alert("모든 항목을 입력해주세요.");
+      return;
+    }
+
+    const newEntry = { school, contact, proposal, date };
+
+    const list = JSON.parse(localStorage.getItem("exchangeList") || "[]");
+    list.unshift(newEntry);
+    localStorage.setItem("exchangeList", JSON.stringify(list));
+
+    alert("제안이 제출되었습니다. 감사합니다!");
+    form.reset();
+  });
+</script>
+
 </body>
 </html>
