@@ -4,25 +4,37 @@ body {
   background-color: rgb(243, 242, 216);
 }
 
-#include-header {
+/* 스크롤 숨김/등장 효과 */
+header {
+  transition: top 0.3s ease-in-out;
   position: fixed;
-  top: 0;
   left: 0;
   width: 100%;
+  height: 130px;
   z-index: 1000;
-}
-
-/* 본문이 헤더/풋터에 가려지지 않게 여백 주기 */
-main {
-  padding-top: 130px; /* 헤더 높이에 맞게 조절 */
-  border-top: grid 200px;
-}
-
-header {
   background-color: rgb(83, 125, 93);
   color: white;
   padding: 5px 15px;
+  display: grid;
+  grid-template-columns: 0.5fr 3.5fr;
+  grid-template-areas: "title menu";
 }
+
+header.nav-down {
+  top: 0;
+}
+
+header.nav-up {
+  top: -130px;
+}
+
+
+/* 본문이 헤더/풋터에 가려지지 않게 여백 주기 */
+.h_container{
+  padding-top: 130px;
+  background-color:rgb(83, 125, 93);
+}
+
 
 .logo-title {
   display: flex;
@@ -67,12 +79,6 @@ header {
   object-fit: cover;
 }
 
-#top_header {
-  display: grid;
-  grid-template-columns: 0.5fr 3.5fr;
-  grid-template-areas: "title menu";
-  background-color: rgb(83, 125, 93);
-}
 
 #menu {
   display: grid;
