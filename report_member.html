@@ -8,23 +8,117 @@
     <title>SB Golf Club_member</title>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/report.css">
+    <style>
+        .member-container {
+        padding: 50px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        padding-bottom: 130px;
+        }
+
+        .school-section {
+        margin-bottom: 40px;
+        }
+
+        .school-section h4 {
+        margin-bottom: 20px;
+        color: rgb(83, 125, 93);
+        font-weight: bold;
+        }
+
+        .member-grid {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        }
+
+        .member-card {
+        width: 150px;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease;
+        }
+
+        .member-card:hover {
+        transform: scale(1.05);
+        }
+
+        .member-card img {
+        width: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        height: 150px;
+        margin-bottom: 10px;
+        }
+        .executive-intro {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 40px;
+        padding-top: 100px;
+        padding-right: 30px;
+        }
+
+        .intro-card {
+        background-color: #ffffff;
+        padding: 20px;
+        border-left: 5px solid rgb(83, 125, 93);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .intro-card h5 {
+        font-weight: bold;
+        color: rgb(83, 125, 93);
+        margin-bottom: 10px;
+        }
+        footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+        }
+
+
+
+    </style>
 </head>
 <body>
     <div id="include-header"></div>
-<main>
-    <aside>
-        <h3>소개</h3>
-        <ul>
-            <li><a href="report_history.html" >SB역사</a></li>
-            <li><a href="report_activity.html">활동</a></li>
-            <li><a href="report_Directions.html" >오시는 길</a></li>
-            <li><a href="report_member.html" class="active">구성원</a></li>
-        </ul>
-    </aside>
-    <div>
-    
-    </div>
-</main>
+    <main>
+        <aside>
+            <h3>소개</h3>
+            <ul>
+                <li><a href="report_history.html" >SB역사</a></li>
+                <li><a href="report_activity.html">활동</a></li>
+                <li><a href="report_Directions.html" >오시는 길</a></li>
+                <li><a href="report_member.html" class="active">구성원</a></li>
+            </ul>
+        </aside>
+
+        <div class="member-container">
+            <!-- 상단 단체 이미지 -->
+            <img src="IMG/25-1_p_5.jpg" style="width: 100%; max-width: 480px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+
+            <!-- 회장 부회장 소개 카드 -->
+            <div class="executive-intro">
+                <div class="intro-card">
+                <h5>회장 소개</h5>
+                <p>곽태신 회장은 중앙대학교 전자전기공학부&물리학과 21학번이며 24-2에 SB Golf Club 회장이 되어 모든 구성원이 즐겁고 유익한 활동을 할 수 있도록 노력하고 있습니다.</p>
+                </div>
+                <div class="intro-card">
+                <h5>부회장 소개</h5>
+                <p>김정민 부회장은 숙명여자대학교 컴퓨터과학부 23학번이며 24-2에 SB Golf Club 부회장이 되어 행사 기획과 진행을 주도하며, 회장을 보좌하고 밝은 에너지를 가지고 SB를 더욱 활기차게 만들어줍니다.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
     <div id="include-footer"></div>
     <script src="JS/main.js"></script>
 
