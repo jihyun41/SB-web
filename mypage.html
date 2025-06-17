@@ -16,6 +16,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        main{
+            padding-top: 50px;
+        }
         footer {
         position: fixed;
         bottom: 0;
@@ -106,6 +109,14 @@
                 </div>
 
             </div>
+            <div id="adminLinks" class="container mb-5 d-none">
+                <hr>
+                <h5 class="text-center mb-3">관리자 전용 페이지</h5>
+                <div class="text-center">
+                    <a href="admin_main.html" class="btn btn-danger">관리자 페이지 바로가기</a>
+                </div>
+            </div>
+
         </div>
 
         <div class="modal fade" id="imageModal" tabindex="-1">
@@ -141,8 +152,9 @@
             </div>
         </div>
     </main>
-        <div id="include-footer"></div>
 
+        <div id="include-footer"></div>
+        
         <script>
             const imageBox = document.getElementById('imageBox');
             const uploadInput = document.getElementById('uploadInput');
@@ -255,7 +267,13 @@
                         el.classList.add('text-muted');
                     }
                 });
+                if (['운영자', '회장', '부회장'].includes(saved.role)){
+                    const adminSection = document.getElementById('adminLinks');
+                    adminSection.classList.remove('d-none');
+                }
+
             });
+            
 
             document.getElementById('togglePassword').addEventListener('change', function () {
                 const passwordInput = document.getElementById('password');
