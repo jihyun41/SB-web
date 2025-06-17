@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-        window.addEventListener("DOMContentLoaded", () => {
-            fetch("main HTML/header.html")
-                .then(res => res.text())
-                .then(data => document.getElementById("include-header").innerHTML = data);
-
-            fetch("main HTML/footer.html")
-                .then(res => res.text())
-                .then(data => document.getElementById("include-footer").innerHTML = data);
-        });
-=======
 window.addEventListener("DOMContentLoaded", () => {
   // 현재 URL 경로에 따라 상대 경로 조정
   const isInManager = window.location.pathname.includes("/manager/");
@@ -69,4 +58,3 @@ function initScrollHeader() {
     lastScrollTop = st;
   }
 }
->>>>>>> 3e1d508e840298c20e20cc259e9517fdcf1df248
