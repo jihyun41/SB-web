@@ -8,8 +8,8 @@ window.addEventListener("DOMContentLoaded", () => {
     .then(res => res.text())
     .then(data => {
       document.getElementById("include-header").innerHTML = data;
-      initScrollHeader();        // 헤더 스크롤 반응 효과
-      updateAuthButtons();       // 로그인 상태에 따라 버튼 변경
+      initScrollHeader(); // 헤더에 스크롤 효과 적용
+      updateLoginStatus();
     });
 
   // footer 불러오기
@@ -19,35 +19,6 @@ window.addEventListener("DOMContentLoaded", () => {
       document.getElementById("include-footer").innerHTML = data;
     });
 });
-
-// 로그인 상태에 따라 버튼 교체
-function updateAuthButtons() {
-  const currentUser = localStorage.getItem('currentUser');
-  const authContainer = document.getElementById('auth-buttons');
-  if (!authContainer) return;
-
-  if (currentUser) {
-    authContainer.innerHTML = `
-      <button type="button" class="btn" onclick="handleLogout()">로그아웃</button>
-      <button type="button" class="btn" onclick="location.href='mypage.html'">마이페이지</button>
-    `;
-  } else {
-    authContainer.innerHTML = `
-      <button type="button" class="btn" onclick="location.href='login.html'">로그인</button>
-      <button type="button" class="btn" onclick="location.href='create_account.html'">회원가입</button>
-    `;
-  }
-}
-
-// 로그아웃 기능
-function handleLogout() {
-  if (confirm('로그아웃 하시겠습니까?')) {
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('userProfile');
-    localStorage.removeItem('userImage');
-    window.location.reload();
-  }
-}
 
 // 스크롤에 따라 헤더 숨기기/보이기
 function initScrollHeader() {
@@ -86,5 +57,53 @@ function initScrollHeader() {
     }
 
     lastScrollTop = st;
+  }
+}
+window.addEventListener("DOMContentLoaded", () => {
+  const isInManager = window.location.pathname.includes("/manager/");
+  const basePath = isInManager ? "../main_HTML/" : "main_HTML/";
+
+  fetch(basePath + "header.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("include-header").innerHTML = data;
+      initScrollHeader();
+      updateLoginStatus();  // 로그인 상태 반영 함수 호출
+    });
+
+  fetch(basePath + "footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("include-footer").innerHTML = data;
+    });
+});
+
+function updateLoginStatus() {
+  const currentUser = localStorage.getItem("currentUser");
+
+  const loginBtn = document.querySelector("#loginBtn");
+  const logoutBtn = document.querySelector("#logoutBtn");
+  const joinBtn = document.querySelector("button[onclick*='create_account.html']");
+  const mypageBtn = document.querySelector("button[onclick*='mypage.html']");
+
+  if (currentUser) {
+    if (loginBtn) loginBtn.style.display = "none";
+    if (joinBtn) joinBtn.style.display = "none";
+    if (logoutBtn) logoutBtn.style.display = "inline-block";
+    if (mypageBtn) mypageBtn.style.display = "inline-block";
+
+    logoutBtn.addEventListener("click", () => {
+      if (confirm("정말 로그아웃하시겠습니까?")) {
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem("userProfile");
+        localStorage.removeItem("userImage");
+        window.location.href = "login.html";
+      }
+    });
+  } else {
+    if (loginBtn) loginBtn.style.display = "inline-block";
+    if (joinBtn) joinBtn.style.display = "inline-block";
+    if (logoutBtn) logoutBtn.style.display = "none";
+    if (mypageBtn) mypageBtn.style.display = "inline-block";  // 마이페이지는 항상 보여줘도 되면 유지
   }
 }
