@@ -8,7 +8,8 @@ window.addEventListener("DOMContentLoaded", () => {
     .then(res => res.text())
     .then(data => {
       document.getElementById("include-header").innerHTML = data;
-      initScrollHeader(); // 헤더에 스크롤 효과 적용
+      initScrollHeader();        // 헤더 스크롤 반응 효과
+      updateAuthButtons();       // 로그인 상태에 따라 버튼 변경
     });
 
   // footer 불러오기
@@ -18,6 +19,35 @@ window.addEventListener("DOMContentLoaded", () => {
       document.getElementById("include-footer").innerHTML = data;
     });
 });
+
+// 로그인 상태에 따라 버튼 교체
+function updateAuthButtons() {
+  const currentUser = localStorage.getItem('currentUser');
+  const authContainer = document.getElementById('auth-buttons');
+  if (!authContainer) return;
+
+  if (currentUser) {
+    authContainer.innerHTML = `
+      <button type="button" class="btn" onclick="handleLogout()">로그아웃</button>
+      <button type="button" class="btn" onclick="location.href='mypage.html'">마이페이지</button>
+    `;
+  } else {
+    authContainer.innerHTML = `
+      <button type="button" class="btn" onclick="location.href='login.html'">로그인</button>
+      <button type="button" class="btn" onclick="location.href='create_account.html'">회원가입</button>
+    `;
+  }
+}
+
+// 로그아웃 기능
+function handleLogout() {
+  if (confirm('로그아웃 하시겠습니까?')) {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('userProfile');
+    localStorage.removeItem('userImage');
+    window.location.reload();
+  }
+}
 
 // 스크롤에 따라 헤더 숨기기/보이기
 function initScrollHeader() {
