@@ -106,7 +106,7 @@
 
             // 현재 로그인된 유저 정보 저장
             localStorage.setItem('currentUser', JSON.stringify({ email, password, created }));
-            localStorage.setItem('userProfile', JSON.stringify(profile)); // 이게 마이페이지에서 쓰는 정보야!
+            localStorage.setItem('userProfile', JSON.stringify(profile)); //마이페이지에 쓰는 정보
 
             alert('회원가입이 완료되었습니다!');
             window.location.href = 'mypage.html';
