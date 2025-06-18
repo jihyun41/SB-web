@@ -68,7 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       document.getElementById("include-header").innerHTML = data;
       initScrollHeader();
-      updateLoginStatus();  // 로그인 상태 반영 함수 호출
+      updateLoginStatus(); 
     });
 
   fetch(basePath + "footer.html")
@@ -78,32 +78,38 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
 function updateLoginStatus() {
   const currentUser = localStorage.getItem("currentUser");
 
   const loginBtn = document.querySelector("#loginBtn");
   const logoutBtn = document.querySelector("#logoutBtn");
-  const joinBtn = document.querySelector("button[onclick*='create_account.html']");
-  const mypageBtn = document.querySelector("button[onclick*='mypage.html']");
+  const joinBtn = document.querySelector("#joinBtn");
+  const mypageBtn = document.querySelector("#mypageBtn");
 
   if (currentUser) {
     if (loginBtn) loginBtn.style.display = "none";
     if (joinBtn) joinBtn.style.display = "none";
-    if (logoutBtn) logoutBtn.style.display = "inline-block";
     if (mypageBtn) mypageBtn.style.display = "inline-block";
+    if (logoutBtn) {
+      logoutBtn.style.display = "inline-block";
 
-    logoutBtn.addEventListener("click", () => {
-      if (confirm("정말 로그아웃하시겠습니까?")) {
-        localStorage.removeItem("currentUser");
-        localStorage.removeItem("userProfile");
-        localStorage.removeItem("userImage");
-        window.location.href = "login.html";
+      if (!logoutBtn.hasAttribute("data-bound")) {
+        logoutBtn.addEventListener("click", () => {
+          if (confirm("정말 로그아웃하시겠습니까?")) {
+            localStorage.removeItem("currentUser");
+            //localStorage.removeItem("userProfile");
+            //localStorage.removeItem("userImage");
+            window.location.href = "login.html";
+          }
+        });
+        logoutBtn.setAttribute("data-bound", "true");
       }
-    });
+    }
   } else {
     if (loginBtn) loginBtn.style.display = "inline-block";
     if (joinBtn) joinBtn.style.display = "inline-block";
     if (logoutBtn) logoutBtn.style.display = "none";
-    if (mypageBtn) mypageBtn.style.display = "inline-block";  // 마이페이지는 항상 보여줘도 되면 유지
+    if (mypageBtn) mypageBtn.style.display = "inline-block";
   }
 }

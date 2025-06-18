@@ -36,9 +36,7 @@
     <div id="include-header"></div>
     <main>
         <div class="container mt-5">
-            <div class="text-end mb-3">
-                <button class="btn btn-outline-danger" onclick="logout()">로그아웃</button>
-            </div>
+
             <div class="profile-wrapper d-flex flex-wrap justify-content-center align-items-start">
 
                 <div class="profile-image-section text-center me-md-4 mb-4">
@@ -154,16 +152,6 @@
     </main>
 
         <div id="include-footer"></div>
-        <script>
-            function logout() {
-                if (confirm('정말 로그아웃하시겠습니까?')) {
-                    localStorage.removeItem('currentUser');
-                    localStorage.removeItem('userProfile');
-                    localStorage.removeItem('userImage');
-                    window.location.href = 'login.html';
-                }
-            }
-        </script>
 
         <script>
             const imageBox = document.getElementById('imageBox');
