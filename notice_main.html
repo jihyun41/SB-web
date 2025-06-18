@@ -71,89 +71,89 @@
     </style>
 </head>
 <body>
-    <div id="include-header"></div>
+  <div id="include-header"></div>
 
-<main class="container mt-5">
-  <h2 id="notice-title" class="mb-4">주요공지</h2>
-<div id="notice-menu">
-      <div class="btn_container">
-        <button type="button" class="btn text-dark active" onclick="location.href='notice.html'">공지</button>
-        <button type="button" class="btn text-dark"onclick="location.href='notice_schedule.html'" >일정</button>
-        <button type="button" class="btn text-dark" onclick="location.href='notice_MT.html'">MT</button>
-        <button type="button" class="btn text-dark"  onclick="location.href='notice_event.html'">이벤트</button>
-      </div>
-  </div><br>
-  <table class="table table-bordered text-center" >
-    <thead class="table" style="background-color: #c1b775;">
-      <tr>
-        <th scope="col">번호</th>
-        <th scope="col">제목</th>
-        <th scope="col">작성일</th>
-      </tr>
-    </thead>
-    <tbody id="noticeTableBody" style="background-color: rgb(220,219,184);"></tbody>
+  <main class="container mt-5">
+    <h2 id="notice-title" class="mb-4">주요공지</h2>
+    <div id="notice-menu">
+          <div class="btn_container">
+            <button type="button" class="btn text-dark active" onclick="location.href='notice.html'">공지</button>
+            <button type="button" class="btn text-dark"onclick="location.href='notice_schedule.html'" >일정</button>
+            <button type="button" class="btn text-dark" onclick="location.href='notice_MT.html'">MT</button>
+            <button type="button" class="btn text-dark"  onclick="location.href='notice_event.html'">이벤트</button>
+          </div>
+    </div><br>
+    <table class="table table-bordered text-center" >
+      <thead class="table" style="background-color: #c1b775;">
+        <tr>
+          <th scope="col">번호</th>
+          <th scope="col">제목</th>
+          <th scope="col">작성일</th>
+        </tr>
+      </thead>
+      <tbody id="noticeTableBody" style="background-color: rgb(220,219,184);"></tbody>
+    </table>
 
-  </table>
-  <nav aria-label="공지사항 페이지" class="d-flex justify-content-center">
-    <ul class="pagination">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">이전</a>
-      </li>
-      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-      <li class="page-item disabled">
-        <a class="page-link" href="#">다음</a>
-      </li>
-    </ul>
-  </nav>
-</main>
-<!-- 공지 내용 모달 -->
-<div class="modal fade" id="noticeModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalNoticeTitle"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body" id="modalNoticeContent">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+    <nav aria-label="공지사항 페이지" class="d-flex justify-content-center">
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">이전</a>
+        </li>
+        <li li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item disabled">
+          <a class="page-link" href="#">다음</a>
+        </li>
+      </ul>
+    </nav>
+  </main>
+
+  <div class="modal fade" id="noticeModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalNoticeTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="modalNoticeContent">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-    <div id="include-footer"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div id="include-footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-  const noticeBody = document.getElementById("noticeTableBody");
-  const notices = JSON.parse(localStorage.getItem("notices") || "[]");
+  <script>
+    const noticeBody = document.getElementById("noticeTableBody");
+    const notices = JSON.parse(localStorage.getItem("notices") || "[]");
 
-  noticeBody.innerHTML = "";
+    noticeBody.innerHTML = "";
 
-  notices.forEach((notice, index) => {
-    noticeBody.innerHTML += `
-      <tr onclick="openNoticeModal(${index})">
-        <td>${notices.length - index}</td>
-        <td class="text-start">${notice.title}</td>
-        <td>${notice.date}</td>
-      </tr>
-    `;
-  });
+    notices.forEach((notice, index) => {
+      noticeBody.innerHTML += `
+        <tr onclick="openNoticeModal(${index})">
+          <td>${notices.length - index}</td>
+          <td class="text-start">${notice.title}</td>
+          <td>${notice.date}</td>
+        </tr>
+      `;
+    });
 
-  function openNoticeModal(index) {
-    const notice = notices[index];
-    document.getElementById("modalNoticeTitle").innerText = notice.title;
-    document.getElementById("modalNoticeContent").innerText = notice.content;
+    function openNoticeModal(index) {
+      const notice = notices[index];
+      document.getElementById("modalNoticeTitle").innerText = notice.title;
+      document.getElementById("modalNoticeContent").innerText = notice.content;
 
-    const modal = new bootstrap.Modal(document.getElementById("noticeModal"));
-    modal.show();
-  }
-</script>
+      const modal = new bootstrap.Modal(document.getElementById("noticeModal"));
+      modal.show();
+    }
+  </script>
 
-    <script src="JS/main.js"></script>
+  <script src="JS/main.js"></script>
    
 </body>
 </html>
