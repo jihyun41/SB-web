@@ -332,7 +332,7 @@
                     document.getElementById('viewRole').textContent = currentRole;
 
                     const adminSection = document.getElementById('adminLinks');
-                    if (['운영자', '회장', '부회장'].includes(currentRole)) {
+                    if (['운영자', '회장', '부회장', '부원'].includes(currentRole)) {
                         adminSection.classList.remove('d-none');
                     } else {
                         adminSection.classList.add('d-none');
