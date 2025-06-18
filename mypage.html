@@ -248,7 +248,7 @@
                 localStorage.setItem('userProfile', JSON.stringify(updatedProfile));
 
                  alert("회원 정보가 저장되었습니다!");
-                 
+
                 document.getElementById('viewName').textContent = updatedProfile.name;
                 document.getElementById('viewGender').textContent = updatedProfile.gender;
                 document.getElementById('viewBirthday').textContent = updatedProfile.birthday;
@@ -332,7 +332,7 @@
                     document.getElementById('viewRole').textContent = currentRole;
 
                     const adminSection = document.getElementById('adminLinks');
-                    if (['운영자', '회장', '부회장','부원'].includes(currentRole)) {
+                    if (['운영자', '회장', '부회장'].includes(currentRole)) {
                         adminSection.classList.remove('d-none');
                     } else {
                         adminSection.classList.add('d-none');
