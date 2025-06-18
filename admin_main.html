@@ -66,6 +66,15 @@
     const allowedAdmins = ['jihyun418@sookmyung.ac.kr', 'minkwak0525@gmail.com'];
     const allowedRoles = ['운영자', '회장', '부회장'];
 
+    let currentEmail = '';
+    try {
+      const currentUser = JSON.parse(currentUserRaw);
+      currentEmail = currentUser.email || '';
+    } catch (e) {
+      // currentUser가 문자열일 경우 예외 처리
+      currentEmail = currentUserRaw;
+    }
+
     const isAuthorized = (currentUser && allowedAdmins.includes(currentUser)) ||
       (userProfile.role && allowedRoles.includes(userProfile.role));
 
