@@ -52,6 +52,11 @@
     <div id="include-footer"></div>
 
     <script>
+        const currentUser = localStorage.getItem('currentUser');
+        if (currentUser) {
+            alert('이미 로그인된 상태입니다.');
+            window.location.href = 'mypage.html'; 
+        }
         document.getElementById('loginForm').addEventListener('submit', function(event) {
                 event.preventDefault();
 
@@ -65,9 +70,15 @@
                 );
 
                 if (foundUser) {
+                    const profiles = JSON.parse(localStorage.getItem('userProfiles')) || {};
+                    const profile = profiles[foundUser.email] || {};
+                    localStorage.setItem('currentUser', JSON.stringify(foundUser));
+                    localStorage.setItem('userProfile', JSON.stringify(profile));
                     alert('로그인에 성공하셨습니다. 환영합니다!');
-                    window.location.href = 'index.html';
-                } else {
+                    window.location.href = 'mypage.html';
+                }
+
+ else {
                     alert('이메일 또는 비밀번호가 일치하지 않습니다.');
                 }
         });

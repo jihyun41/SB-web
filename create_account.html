@@ -38,9 +38,9 @@
 
             <label for="university">소속:</label>
             <select id="university" name="university" required>
-                <option value="school1">숙명여자대학교</option>
-                <option value="school2">중앙대학교</option>
-                <option value="school3">숭실대학교</option>
+                <option value="숙명여자대학교">숙명여자대학교</option>
+                <option value="중앙대학교">중앙대학교</option>
+                <option value="숭실대학교">숭실대학교</option>
             </select><br><br>
 
             <label for="email">이메일:</label>
@@ -58,7 +58,13 @@
     </main>
     <div id="include-footer"></div>
 
-    <script>
+   <script>
+        const currentUser = localStorage.getItem('currentUser');
+        if (currentUser) {
+            alert('이미 로그인된 상태입니다.');
+            window.location.href = 'mypage.html'; 
+        }
+
         document.getElementById('createaccountForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
@@ -72,21 +78,41 @@
             }
 
             const users = JSON.parse(localStorage.getItem('users')) || [];
-
             const duplicate = users.find(user => user.email === email);
             if (duplicate) {
                 alert('이미 존재하는 이메일입니다.');
                 return;
             }
 
-            users.push({ email, password })
-
+            // 회원 정보 저장
+            const created = new Date().toLocaleDateString();
+            users.push({ email, password, created });
             localStorage.setItem('users', JSON.stringify(users));
 
+            // 프로필 정보 저장
+            const profiles = JSON.parse(localStorage.getItem('userProfiles')) || {};
+            profiles[email] = {
+                name: document.getElementById('name').value,
+                birthday: document.getElementById('birthdate').value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                university: document.getElementById('university').value,
+                email: email,
+                password: password,
+                role: '부원'
+            };
+
+            localStorage.setItem('userProfiles', JSON.stringify(profiles));
+
+            // 현재 로그인 사용자 정보 저장
+            const currentUserObj = { email, password, created };
+            localStorage.setItem('currentUser', JSON.stringify(currentUserObj));
+            localStorage.setItem('userProfile', JSON.stringify(profiles[email]));
+
             alert('회원가입이 완료되었습니다!');
-            window.location.href = 'main.html';
+            window.location.href = 'mypage.html';
         });
     </script>
+
 
     <script src="JS/main.js"></script>
 

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SB Golf Club - 회원 관리</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    main {
+      padding-top: 60px;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="include-header"></div>
+  <main class="container">
+    <h2 class="text-center mb-4">회원 관리 페이지</h2>
+
+    <div class="mb-3">
+      <input type="text" id="searchInput" class="form-control" placeholder="이름, 이메일, 소속 등으로 검색">
+    </div>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>이메일</th>
+          <th>성별</th>
+          <th>생년월일</th>
+          <th>소속</th>
+          <th>역할</th>
+          <th>가입일</th>
+          <th>관리</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody">
+      </tbody>
+    </table>
+  </main>
+  <div id="include-footer"></div>
+
+  <script src="JS/main.js"></script>
+  <script>
+
+    const userTableBody = document.getElementById('userTableBody');
+    const searchInput = document.getElementById('searchInput');
+
+
+    function loadUsers() {
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const profiles = JSON.parse(localStorage.getItem('userProfiles')) || {};
+      userTableBody.innerHTML = '';
+      const keyword = searchInput.value.toLowerCase();
+
+      users.forEach(user => {
+        const profile = profiles[user.email] || {};
+
+        const name = profile.name || '-';
+        const gender = profile.gender || '-';
+        const birthday = profile.birthday || '-';
+        const university = profile.university || '-';
+        const role = profile.role || '부원';
+        const created = user.created || '-';
+
+        if (![name, user.email, gender, university].some(field => field.toLowerCase().includes(keyword))) return;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${name}</td>
+          <td>${user.email}</td>
+          <td>${gender}</td>
+          <td>${birthday}</td>
+          <td>${university}</td>
+          <td>
+            <select class="form-select form-select-sm" onchange="changeRole('${user.email}', this.value)">
+              <option ${role === '부원' ? 'selected' : ''}>부원</option>
+              <option ${role === '부회장' ? 'selected' : ''}>부회장</option>
+              <option ${role === '회장' ? 'selected' : ''}>회장</option>
+              <option ${role === '운영자' ? 'selected' : ''}>운영자</option>
+            </select>
+          </td>
+          <td>${created}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" onclick="deleteUser('${user.email}')">삭제</button>
+          </td>
+        `;
+        userTableBody.appendChild(tr);
+      });
+    }
+
+    function changeRole(email, newRole) {
+      const profiles = JSON.parse(localStorage.getItem('userProfiles')) || {};
+      if (!profiles[email]) profiles[email] = {};
+      profiles[email].role = newRole;
+      localStorage.setItem('userProfiles', JSON.stringify(profiles));
+      loadUsers();
+    }
+
+    function deleteUser(email) {
+        if (!confirm('정말 삭제하시겠습니까?')) return;
+
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        users = users.filter(u => u.email !== email);
+        localStorage.setItem('users', JSON.stringify(users));
+
+        const profiles = JSON.parse(localStorage.getItem('userProfiles')) || {};
+        delete profiles[email];
+        localStorage.setItem('userProfiles', JSON.stringify(profiles));
+
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.email === email) {
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('userProfile');
+            localStorage.removeItem('userImage');
+            alert('현재 로그인된 계정이 삭제되어 로그아웃됩니다.');
+            window.location.href = 'login.html';
+            return;
+        }
+
+        loadUsers();
+    }
+
+
+    function changeRole(email, newRole) {
+        const profiles = JSON.parse(localStorage.getItem('userProfiles')) || {};
+        if (!profiles[email]) profiles[email] = {};
+        profiles[email].role = newRole;
+        localStorage.setItem('userProfiles', JSON.stringify(profiles));
+
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.email === email) {
+            const userProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
+            userProfile.role = newRole;
+            localStorage.setItem('userProfile', JSON.stringify(userProfile));
+
+            currentUser.role = newRole;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        }
+
+        loadUsers();
+        }
+
+
+    searchInput.addEventListener('input', loadUsers);
+    window.addEventListener('DOMContentLoaded', loadUsers);
+  </script>
+</body>
+</html>

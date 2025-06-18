@@ -26,6 +26,9 @@
         width: 100%;
         z-index: 1000;
     }
+    .text-end .btn{
+        background-color: rgb(173, 41, 41);
+    }
     </style>
 </head>
 
@@ -33,6 +36,9 @@
     <div id="include-header"></div>
     <main>
         <div class="container mt-5">
+            <div class="text-end mb-3">
+                <button class="btn btn-outline-danger" onclick="logout()">로그아웃</button>
+            </div>
             <div class="profile-wrapper d-flex flex-wrap justify-content-center align-items-start">
 
                 <div class="profile-image-section text-center me-md-4 mb-4">
@@ -87,15 +93,6 @@
                                 <label class="form-check-label" for="togglePassword">비밀번호 보기</label>
                             </div>
                         </div>
-                        <div class="mb-2">
-                            <label for="role"><strong>상태</strong></label>
-                            <select id="role" class="form-select">
-                                <option>부원</option>
-                                <option>회장</option>
-                                <option>부회장</option>
-                                <option>운영자</option>
-                            </select>
-                        </div>
                         <button type="submit" class="btn btn-primary">저장</button>
                     </form>
                 </div>
@@ -116,6 +113,7 @@
                     <a href="admin_main.html" class="btn btn-danger">관리자 페이지 바로가기</a>
                 </div>
             </div>
+            
 
         </div>
 
@@ -154,7 +152,17 @@
     </main>
 
         <div id="include-footer"></div>
-        
+        <script>
+            function logout() {
+                if (confirm('정말 로그아웃하시겠습니까?')) {
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('userProfile');
+                    localStorage.removeItem('userImage');
+                    window.location.href = 'login.html';
+                }
+            }
+        </script>
+
         <script>
             const imageBox = document.getElementById('imageBox');
             const uploadInput = document.getElementById('uploadInput');
@@ -288,6 +296,35 @@
                     imageBox.style.backgroundImage = 'none';
                 }
             });
+
+        </script>
+        <script>
+            const currentUser = localStorage.getItem('currentUser');
+            if (!currentUser) {
+                alert('로그인이 필요한 페이지입니다.');
+                window.location.href = 'login.html';
+            }
+
+            let previousRole = null;
+
+            setInterval(() => {
+                const saved = JSON.parse(localStorage.getItem('userProfile')) || {};
+                const currentRole = saved.role;
+
+                if (currentRole && currentRole !== previousRole) {
+                    previousRole = currentRole;
+                    document.getElementById('viewRole').textContent = currentRole;
+
+                    const adminSection = document.getElementById('adminLinks');
+                    if (['운영자', '회장', '부회장'].includes(currentRole)) {
+                        adminSection.classList.remove('d-none');
+                    } else {
+                        adminSection.classList.add('d-none');
+                    }
+                }
+            }, 1000);
+
+
         </script>
 
         <script src="JS/main.js"></script>
