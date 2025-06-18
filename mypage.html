@@ -93,7 +93,9 @@
                                 <label class="form-check-label" for="togglePassword">비밀번호 보기</label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">저장</button>
+                        <button type="submit" class="btn btn-primary me-2">저장</button>
+                        <button type="button" class="btn btn-secondary" onclick="cancelEdit()">취소</button>
+
                     </form>
                 </div>
 
@@ -173,6 +175,18 @@
                 tempSelectedImage = src;
                 imageBox.style.backgroundImage = `url('${src}')`;
             }
+            function cancelEdit() {
+                document.getElementById('profileEdit').classList.add('d-none');
+                document.getElementById('profileView').classList.remove('d-none');
+
+                const saved = JSON.parse(localStorage.getItem('userProfile')) || {};
+                document.getElementById('editName').value = saved.name || '';
+                document.getElementById('editGender').value = saved.gender || '여성';
+                document.getElementById('editbirthday').value = saved.birthday || '';
+                document.getElementById('editEmail').value = saved.email || '';
+                document.getElementById('password').value = saved.password || '';
+            }
+
 
             function saveSelectedImage() {
                 if (tempSelectedImage) {
@@ -214,12 +228,12 @@
 
                 document.getElementById('password').value = saved.password || '';
 
-                document.getElementById('role').value = saved.role || '부원';
             }
 
             document.getElementById('profileEdit').addEventListener('submit', function (e) {
                 e.preventDefault();
 
+                const saved = JSON.parse(localStorage.getItem('userProfile')) || {};
                 const inputPassword = document.getElementById('password').value;
 
                 const updatedProfile = {
@@ -228,11 +242,13 @@
                     birthday: document.getElementById('editbirthday').value,
                     email: document.getElementById('editEmail').value,
                     password: inputPassword,
-                    role: document.getElementById('role').value
+                    role: saved.role || '부원'
                 };
 
                 localStorage.setItem('userProfile', JSON.stringify(updatedProfile));
 
+                 alert("회원 정보가 저장되었습니다!");
+                 
                 document.getElementById('viewName').textContent = updatedProfile.name;
                 document.getElementById('viewGender').textContent = updatedProfile.gender;
                 document.getElementById('viewBirthday').textContent = updatedProfile.birthday;
